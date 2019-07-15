@@ -2,20 +2,20 @@
 <testng-results skipped="0" failed="0" ignored="1" total="2" passed="1">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="11812" started-at="2019-07-15T09:00:24Z" finished-at="2019-07-15T09:00:36Z">
+  <suite name="Default suite" duration-ms="16637" started-at="2019-07-15T09:58:13Z" finished-at="2019-07-15T09:58:29Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="11812" started-at="2019-07-15T09:00:24Z" finished-at="2019-07-15T09:00:36Z">
+    <test name="Default test" duration-ms="16637" started-at="2019-07-15T09:58:13Z" finished-at="2019-07-15T09:58:29Z">
       <class name="testNgMavenExample.TestNgMavenExampleTest">
-        <test-method status="PASS" signature="startReport()[pri:0, instance:testNgMavenExample.TestNgMavenExampleTest@3f49dace]" name="startReport" is-config="true" duration-ms="458" started-at="2019-07-15T09:00:24Z" finished-at="2019-07-15T09:00:25Z">
+        <test-method status="PASS" signature="startReport()[pri:0, instance:testNgMavenExample.TestNgMavenExampleTest@3f49dace]" name="startReport" is-config="true" duration-ms="423" started-at="2019-07-15T09:58:13Z" finished-at="2019-07-15T09:58:13Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- startReport -->
-        <test-method status="PASS" signature="testChromeSearch()[pri:0, instance:testNgMavenExample.TestNgMavenExampleTest@3f49dace]" name="testChromeSearch" duration-ms="10726" started-at="2019-07-15T09:00:25Z" description="Creation of a CR Ticket" finished-at="2019-07-15T09:00:36Z">
+        <test-method status="PASS" signature="testChromeSearch()[pri:0, instance:testNgMavenExample.TestNgMavenExampleTest@3f49dace]" name="testChromeSearch" duration-ms="15595" started-at="2019-07-15T09:58:13Z" description="Creation of a CR Ticket" finished-at="2019-07-15T09:58:29Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testChromeSearch -->
-        <test-method status="PASS" signature="getResult(org.testng.ITestResult)[pri:0, instance:testNgMavenExample.TestNgMavenExampleTest@3f49dace]" name="getResult" is-config="true" duration-ms="3" started-at="2019-07-15T09:00:36Z" finished-at="2019-07-15T09:00:36Z">
+        <test-method status="PASS" signature="getResult(org.testng.ITestResult)[pri:0, instance:testNgMavenExample.TestNgMavenExampleTest@3f49dace]" name="getResult" is-config="true" duration-ms="3" started-at="2019-07-15T09:58:29Z" finished-at="2019-07-15T09:58:29Z">
           <params>
             <param index="0">
               <value>
@@ -26,7 +26,7 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- getResult -->
-        <test-method status="PASS" signature="endReport()[pri:0, instance:testNgMavenExample.TestNgMavenExampleTest@3f49dace]" name="endReport" is-config="true" duration-ms="590" started-at="2019-07-15T09:00:36Z" finished-at="2019-07-15T09:00:36Z">
+        <test-method status="PASS" signature="endReport()[pri:0, instance:testNgMavenExample.TestNgMavenExampleTest@3f49dace]" name="endReport" is-config="true" duration-ms="578" started-at="2019-07-15T09:58:29Z" finished-at="2019-07-15T09:58:29Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- endReport -->
