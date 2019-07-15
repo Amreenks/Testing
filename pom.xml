@@ -54,28 +54,54 @@
    				<artifactId>velocity</artifactId>
    				<version>1.4</version>
   	 </dependency>
+  	 
+  	 <dependency>
+            <groupId>com.aventstack</groupId>
+            <artifactId>extentreports</artifactId>
+            <version>3.0.7</version>
+        </dependency>
+  	 
   </dependencies>
-  <!-- <build>
+  
+  
+  <distributionManagement>
+        <repository>
+            <id>bams-aws-release-maven-cloud</id>
+            <name>BAMS Release Repository</name>
+            <url>https://bams-aws.refinitiv.com/artifactory/webapp/#/artifacts/browse/tree/General/default.maven.global/ITSM-QA</url>
+        </repository>
+
+</distributionManagement>
+ <build>
   <plugins>
-   <plugin>
-    <groupId>org.apache.maven.plugins</groupId>
-    <artifactId>maven-compiler-plugin</artifactId>
-    <configuration>
-     <source>1.8</source>
-     <target>1.8</target>
-    </configuration>
-   </plugin>
-   <plugin>
-    <groupId>org.apache.maven.plugins</groupId>
-    <artifactId>maven-surefire-plugin</artifactId>
-    <version>2.18.1</version>
-    <configuration>
-     <suiteXmlFiles>
-      <suiteXmlFile>testng.xml</suiteXmlFile>
-     </suiteXmlFiles>
-    </configuration>
-   </plugin>
-  </plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-source-plugin</artifactId>
+				<version>3.0.1</version>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.5.1</version>
+				<configuration>
+					<source>1.8</source>
+					<target>1.8</target>
+					
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jar-plugin</artifactId>
+				<version>3.0.2</version>
+				<executions>
+					<execution>
+						<goals>
+						<goal>test-jar</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			</plugins>
  </build>
-     -->
+    
 </project>

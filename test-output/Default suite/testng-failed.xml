@@ -5,7 +5,7 @@
     <classes>
       <class name="testNgMavenExample.TestNgMavenExampleTest">
         <methods>
-          <include name="createChangeRequest"/>
+          <include name="testChromeSearch"/>
         </methods>
       </class> <!-- testNgMavenExample.TestNgMavenExampleTest -->
     </classes>
