@@ -27,6 +27,7 @@ import com.aventstack.extentreports.markuputils.MarkupHelper;
 import com.aventstack.extentreports.reporter.ExtentHtmlReporter;
 import com.aventstack.extentreports.reporter.configuration.ChartLocation;
 import com.aventstack.extentreports.reporter.configuration.Theme;
+import com.pages.ChangePage;
 
 /*import com.aventstack.extentreports.Status;
 import com.aventstack.extentreports.markuputils.ExtentColor;
@@ -39,6 +40,7 @@ import ReusableMethods.ChangeReusable;
 import ReusableMethods.SafeLogin;
 import ReusableMethods.ServiceNowUtils;
 //import pages.ChangePage;
+import ReusableMethods.WaitUtils;
 
 
 
@@ -68,32 +70,13 @@ public class TestNgMavenExampleTest {
 		htmlReporter.config().setTheme(Theme.STANDARD);
 	}
 	
-	/* Firfox Ber compatability code
-	 * 
-	@Test(priority=0,description="Creation of a CR Ticket",enabled=true)
-	public void f()	{
 	
-	System.out.println("output");
-	//System.setProperty("webdriver.firefox.bin","C:\\Program Files\\Mozilla Firefox\\firefox.exe");
-	System.setProperty("webdriver.gecko.driver","C:/Program Files/geckodriver.exe");
-	WebDriver driver=new FirefoxDriver();
-	driver.get("http://thomsonreutersqa.service-now.com");
-	WebElement e =driver.findElement(By.id("USER"));
-	e.sendKeys("X011746");
-	WebElement e1= driver.findElement(By.id("PASSWORD"));
-	e1.sendKeys("Numan#220193");
-	 driver.findElement(By.id("safeLoginbtn")).click();
-	 driver.close();
-	 }
-	*/	
-	
-// Chrome compatability code
 	 @Test(priority=0,description="Creation of a CR Ticket",enabled=true)
 	 private void testChromeSearch() throws IOException {
 			// TODO Auto-generated method stub
 		//	System.setProperty("webdriver.chrome.driver","C:/Users/UX011746/Desktop/FFBackup/ServiceNowQAAutomationnewbackup/SNOWQA/properties/chromedriver-2.46.exe");
-		 logger = extent.createTest("Creation of a CR Ticket");	
-			//WebDriver driver=new ChromeDriver();
+		 logger = extent.createTest("Sample");	
+		
 		 String ChromeDrivers = Capabilities.getPropertyValue("ChromeDrivers");
 			System.setProperty("webdriver.chrome.driver",ChromeDrivers);
 			WebDriver driver=new ChromeDriver();
@@ -110,27 +93,14 @@ public class TestNgMavenExampleTest {
 	 
 	
 	 
-	 // net code for chrome
-	/* @Test
-	 public void testGoogleSearch() {
-	   // Optional, if not specified, WebDriver will search your path for chromedriver.
-	   System.setProperty("webdriver.chrome.driver", "/path/to/chromedriver");
-
-	   WebDriver driver = new ChromeDriver();
-	   driver.get("http://www.google.com/xhtml");
-	   Thread.sleep(5000);  // Let the user actually see something!
-	   WebElement searchBox = driver.findElement(By.name("q"));
-	   searchBox.sendKeys("ChromeDriver");
-	   searchBox.submit();
-	   Thread.sleep(5000);  // Let the user actually see something!
-	   driver.quit();
-	 }*/
+	 
 	
 
 	
-	@Test(priority=1,description="Creation of a CR Ticket",enabled=false)
+	@Test(priority=1,description="Creation of a CR Ticket",enabled=true)
 	public void createChangeRequest() throws IOException, InterruptedException
 	{
+		 logger = extent.createTest("Creation of a CR Ticket");	
 		String ChromeDrivers = Capabilities.getPropertyValue("ChromeDrivers");
 		System.setProperty("webdriver.chrome.driver",ChromeDrivers);
 		WebDriver driver=new ChromeDriver();
@@ -140,41 +110,43 @@ public class TestNgMavenExampleTest {
 	    Thread.sleep(3000);
 	    ServiceNowUtils.navigateToModuleName(driver, "change");
 	    crNumber = ChangeReusable.createChange(driver,1,2);
-	    driver.close();
-	    
+	    driver.quit();
+		 Assert.assertTrue(true);
+			logger.log(Status.PASS, MarkupHelper.createLabel("Test Case Passed is Creation of a CR Ticket", ExtentColor.GREEN));
 		
 		
 	}
 	
-	/*@Test(priority=1,description="Approval of a Change Ticket",enabled=true)
+	@Test(priority=1,description="Approval of a Change Ticket",enabled=true)
 	public void testMoveToApprovalState() throws Exception
 	{
 		//ExtentReport.startReport(Capabilities.getPropertyValue("ChangeReports"), "SmokeChangeTest1", "Approve Change Ticket Report");
 		//logger = extent.createTest("Creation of a CR Ticket");
-		String FirefoxDriver = Capabilities.getPropertyValue("FirefoxDriver");
-		System.setProperty("webdriver.gecko.driver",FirefoxDriver);
-		WebDriver driver=new FirefoxDriver();
-		
-	    driver.get("http://thomsonreutersqa.service-now.com");
+		 logger = extent.createTest("Approval of change ticket");	
+			String ChromeDrivers = Capabilities.getPropertyValue("ChromeDrivers");
+			System.setProperty("webdriver.chrome.driver",ChromeDrivers);
+			WebDriver driver=new ChromeDriver();
+			
+		    driver.get("http://thomsonreutersqa.service-now.com");
 	    SafeLogin.logInUser(driver);
 	    Thread.sleep(3000);
 	    ServiceNowUtils.navigateToModuleName(driver, "change");
 	    crNumber = ChangeReusable.createChange(driver,1,2);
 
-		ChangeReusables.searchDesiredChangeTicket(driver, crNumber);
+		ChangeReusable.searchDesiredChangeTicket(driver, crNumber);
 		ChangePage.getChangeNumberFromQueue(driver, crNumber).click();	
 		WaitUtils.waitForPageToLoad(driver, 10);
-		ChangeReusables.verifyStateOfChangeTicket(driver, "Draft", crNumber,1,2);
+		ChangeReusable.verifyStateOfChangeTicket(driver, "Draft", crNumber,1,2);
 		ChangePage.getSubmitForPlanningBtn(driver).click();
 		Thread.sleep(10000);
-		ChangeReusables.moveToAssessmentState(driver);
-		ChangeReusables.schedule(driver);
+		ChangeReusable.moveToAssessmentState(driver);
+		ChangeReusable.schedule(driver);
 		ChangePage.getUpdateBtn(driver).click();
-		ChangeReusables.searchDesiredChangeTicket(driver, crNumber);
+		ChangeReusable.searchDesiredChangeTicket(driver, crNumber);
 		ChangePage.getChangeNumberFromQueue(driver, crNumber).click();
-		ChangeReusables.moveToApprovalState(driver);
+		ChangeReusable.moveToApprovalState(driver);
 		ChangePage.getUpdateBtn(driver).click();
-		ChangeReusables.searchDesiredChangeTicket(driver, crNumber);
+		ChangeReusable.searchDesiredChangeTicket(driver, crNumber);
 		ChangePage.getChangeNumberFromQueue(driver, crNumber).click();
 		ChangePage.getGroupApprovalTab(driver).click();
 		Thread.sleep(5000);
@@ -182,14 +154,14 @@ public class TestNgMavenExampleTest {
 		Thread.sleep(5000);
 		ChangePage.getApproveBtn(driver).click();
 	    Thread.sleep(5000);
-	    ChangeReusables.verifyStateOfChangeTicket(driver, "Implementation", crNumber,1,2);
+	    ChangeReusable.verifyStateOfChangeTicket(driver, "Implementation", crNumber,1,2);
 	 //ChangeReusables.FinalReport(driver, "Implementation", crNumber, 3, 2);
 		 driver.close();
 		 Assert.assertTrue(true);
 		 logger.log(Status.PASS, MarkupHelper.createLabel("Test Case Passed is Approve of change ticket", ExtentColor.GREEN));
 		
 		 
-	}*/
+	}
 	
 	
 	@AfterMethod
