@@ -7,6 +7,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeDriverService;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxBinary;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
@@ -77,9 +79,22 @@ public class TestNgMavenExampleTest {
 		//	System.setProperty("webdriver.chrome.driver","C:/Users/UX011746/Desktop/FFBackup/ServiceNowQAAutomationnewbackup/SNOWQA/properties/chromedriver-2.46.exe");
 		 logger = extent.createTest("Sample");	
 		
+		 
+		 
+		 
 		 String ChromeDrivers = Capabilities.getPropertyValue("ChromeDrivers");
-			System.setProperty("webdriver.chrome.driver",ChromeDrivers);
-			WebDriver driver=new ChromeDriver();
+
+
+final ChromeOptions options = new ChromeOptions();
+		 
+
+
+ChromeDriverService driverService = new ChromeDriverService.Builder().usingDriverExecutable(new File("./Properties/chromedriver.exe")).usingAnyFreePort().build();
+	driverService.start();
+//log.info("Chrome driver instance is intiated successfully
+	WebDriver driver=new ChromeDriver((ChromeDriverService) driverService, options);
+			//System.setProperty("webdriver.chrome.driver",ChromeDrivers);
+			//WebDriver driver=new ChromeDriver();
 			driver.get("http://thomsonreutersqa.service-now.com");
 			WebElement e =driver.findElement(By.id("USER"));
 			e.sendKeys("X011746");
